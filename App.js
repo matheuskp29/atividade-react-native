@@ -9,7 +9,6 @@ const sorteio = () => {
     let numeroAleatorio = Math.floor(Math.random() * 60) + 1
     if(!vect.includes(numeroAleatorio)) {
       vect.push(numeroAleatorio)
-      console.log(vect)
     }
   } while(vect.length < 6)
 
