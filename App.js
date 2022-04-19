@@ -1,36 +1,37 @@
 import { StyleSheet, Text, View, Button} from 'react-native';
-import React, { useState } from 'react';
+import React from 'react';
+
+const sorteio = () => {
+
+  let vect = []
+
+  do {
+    let numeroAleatorio = Math.floor(Math.random() * 60) + 1
+    if(!vect.includes(numeroAleatorio)) {
+      vect.push(numeroAleatorio)
+      console.log(vect)
+    }
+  } while(vect.length < 6)
+
+  return vect
+}
 
 export default class extends React.Component {
 
   constructor (props) {
     super(props)
     this.state = {
-      n1: Math.floor(Math.random() * 61),
-      n2: Math.floor(Math.random() * 61),
-      n3: Math.floor(Math.random() * 61),
-      n4: Math.floor(Math.random() * 61),
-      n5: Math.floor(Math.random() * 61),
-      n6: Math.floor(Math.random() * 61),
+      numeros: []
     }
   }
 
   render() {
     return(
       <View style={styles.container}>
-        <Text>{[this.state.n1, "\n" + this.state.n2,
-         "\n" + this.state.n3, "\n" + this.state.n4,
-         "\n" + this.state.n5,  "\n" + this.state.n6]}</Text>
+        <Text style={{paddingBottom: 10, fontWeight: 'bold'}}>{this.state.numeros.join(' \n')}</Text>
         <Button 
-          title="OK"
-          onPress={() => this.setState({
-            n1: Math.floor(Math.random() * 61),
-            n2: Math.floor(Math.random() * 61),
-            n3: Math.floor(Math.random() * 61),
-            n4: Math.floor(Math.random() * 61),
-            n5: Math.floor(Math.random() * 61),
-            n6: Math.floor(Math.random() * 61)
-          })}/>
+          title="Fazer sorteio"
+          onPress={() => this.setState({numeros: sorteio()})}/>
       </View>
     )
   }
@@ -44,5 +45,3 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 })
-
-
